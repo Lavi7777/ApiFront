@@ -13,9 +13,7 @@ builder.Services.AddTransient<ICountryService, CountryService>();
 builder.Services.AddTransient<ICompanyService, CompanyService>();
 builder.Services.AddTransient<IAutologinUrlService, AutologinUrlService>();
 
-
 builder.Services.AddControllers();
-
 builder.Services.AddEndpointsApiExplorer();
 
 builder.Services.AddSwaggerGen(opt =>
@@ -42,9 +40,9 @@ builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAnyOriginPolicy", policy =>
     {
-        policy.AllowAnyOrigin() 
-              .AllowAnyHeader() 
-              .AllowAnyMethod(); 
+        policy.AllowAnyOrigin()
+              .AllowAnyHeader()
+              .AllowAnyMethod();
     });
 });
 
@@ -57,9 +55,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
-
+app.UseCors("AllowAnyOriginPolicy"); 
 app.UseAuthorization();
-
 app.MapControllers();
-
 app.Run();
